@@ -1,0 +1,16 @@
+version: '3.8'
+
+volumes:
+  db-data:
+
+services:
+  database:
+    image: "mariadb:11.7"
+    ports:
+      - "3307:3306"
+    environment:
+      - DB_HOST=database
+      - MYSQL_DATABASE=pet01
+      - MYSQL_ROOT_PASSWORD=database_pass
+    volumes:
+      - db-data:/var/lib/mysql
