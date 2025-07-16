@@ -4,8 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "0.116.0"
 uvicorn = "0.35.0"
+sqlalchemy = "*"
+databases = "*"
+pymysql = "*"
+fastapi = {extras = ["all"], version = "*"}
+aiomysql = "*"
 
 [dev-packages]
 
