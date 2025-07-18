@@ -1,6 +1,6 @@
-from models import users
-from db import database
-from schemas import UserCreate, UserUpdate
+from app.models import users
+from app.db import database
+from app.schemas import UserCreate, UserUpdate
 
 async def create_user(user: UserCreate):
     query = users.insert().values(name=user.name, email=user.email)

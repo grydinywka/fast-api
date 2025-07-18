@@ -1,8 +1,8 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, Query, HTTPException
-from db import database, engine, metadata
-from schemas import UserCreate, User, UserUpdate
-import crud
+from app.db import database, engine, metadata
+from app.schemas import UserCreate, User, UserUpdate
+import app.crud
 
 
 metadata.create_all(engine)
