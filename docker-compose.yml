@@ -14,3 +14,33 @@ services:
       - MYSQL_ROOT_PASSWORD=database_pass
     volumes:
       - db-data:/var/lib/mysql
+
+  fastapi:
+#    image: evresys/fastapi2:local
+#    depends_on:
+#      - database
+#    ports:
+#      - "8004:8004"
+    build: .
+    container_name: fastapi_app
+    expose:
+      - 8004
+    restart: always
+    depends_on:
+      - database
+    environment:
+      - DB_HOST=database
+      - DB_PORT=3306
+      - DB_NAME=pet01
+      - DB_USER=root
+      - DB_PASSWORD=database_pass
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "8084:82"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - fastapi
