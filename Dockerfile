@@ -19,9 +19,7 @@ WORKDIR /app
 
 # WORKDIR /opt/app
 # ADD Pipfile* /opt/app/
-# RUN pip install pipenv
-# RUN pipenv install
-# RUN pip freeze
+# RUN pip install pipenv && pipenv install
 
 # RUN apt -y remove gcc && apt -y autoremove && apt -y autoclean
 # Copy Pipenv files first (for better Docker caching)
